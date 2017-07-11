@@ -1,0 +1,24 @@
+void swapLinks(Node* &head)
+{
+    if(!head || !(head -> next))
+    return;
+    
+    Node* temp;
+    Node* current = head;
+    Node* prev = NULL;
+    
+    head = head -> next;
+    
+    while(current && current -> next)
+    {
+        if(prev)
+        prev -> next = current -> next;
+        
+        temp = current -> next -> next;
+        current -> next -> next = current;
+        current -> next = temp;
+        
+        prev = current;
+        current = current -> next;
+    }
+}
